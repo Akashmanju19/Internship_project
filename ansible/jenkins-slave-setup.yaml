@@ -1,5 +1,5 @@
 #how to install ansible-playbook -i /opt/hosts jenkins-master-setup.yaml
-
+#d1c56663a40940998a8932cc40cf5b70
 ---
 - hosts: jenkins-slave   #server name
   become: true 
