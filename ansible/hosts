@@ -1,3 +1,17 @@
+# Setup Ansible
+1. Install ansibe on Ubuntu 22.04 
+   ```sh 
+   sudo apt update
+   sudo apt install software-properties-common
+   sudo add-apt-repository --yes --update ppa:ansible/ansible
+   sudo apt install ansible
+   ```
+
+2. Add Jenkins master and slave as hosts 
+Add jenkins master and slave private IPs in the inventory file 
+in this case, we are using /opt is our working directory for Ansible. 
+   ```
+
 [jenkins-master]
 10.1.1.204
 
@@ -12,3 +26,53 @@ ansible_ssh_private_key_file=/opt/primekeypem.pem
 [build-slave:vars]
 ansible_user=ubuntu
 ansible_ssh_private_key_file=/opt/primekeypem.pem
+   ```
+add key
+
+primekeypem.pem
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA7EI2w0PyA/rLIw/EgIpHneILFJ62l5w6wAMkFlmlhn0PNUSf
+7w9Y3nkOK7pj6mZMQtBCWbTQac6RwsAMvqagIyqsUBA8u8etSsrbPSpjqoqqrKvL
+WqnowV+LjaMOZlJiYFt9T8TE8t0r6JZwtSbVfk8l9yfUhOdQ8wYOGJpj0WXOwKmD
+4I3FU7Ny+7h5+4moR/77MX1LvXNTH/QAkhDwotinyCv6IGrQGAKRUSGM81zG12XF
+toc8wRRjTFmOhnW7QD3dk9R8INkwnps+NVR6f8wIUJCBEVUIKpwQJjwIFsiITlmY
+ZEl1cbqIcR/iSylc+Qfzegf6YPQpyp9kD+UsmwIDAQABAoIBAFDmJ2xbkr6MHQzn
+dEjzkKxeX57y7eEiTPe825mPnt9baV67Hey1G6AqYZDVpSr5Vnm2aFHhWVAxvLWs
+H3EVC1afYRuVQ8alDBDFP6dFIZWfH+w6c0qbTakRd27Le73LzgXirhknbq0e0M82
+3GcbYhV7MqvcBqhvsMdWtnL0QuPLSTOwOSWdPZFAomwHdBnvHSu3dZtTLrZ7LCSL
+oyWRIHQ8bHwFL/snblKAyhl7nYMBzkTEIZyOpH9q0hio/mi20807jUbKLBjFlhza
+sjzUmrKrpfa00WkinTcspgfQLIEdeO2JHsuaXj7nDPmTvJSRDTUfFJcReHOwO+JJ
++Qtcv5kCgYEA/Bm9BcwwcQxSfuPgj50R5YqIBx/VjRi/dsWJT2k/qry0cfhGqpZF
+Xi6nolKtXkAi3H5R87CtSp06rlhAWWAGZbGmFkC3d48mCf4dHkoSUSlEZnBtmP3G
+KVCRc1LC4AUfQiYRRIj7eLQI9S9ngxXr7tN08YWzhbUKIDtOMAa9KLUCgYEA7+m+
+xbjBoo2CytuxLGpFtsZ+C5gV/PqUu8O/Gd5JtCxJ6nKkQKvoiKuvF7dgMjq5IX9k
+K/+2C5QZNSXM/faK71fpausgi0trrtpAgrzgZyc07kTPzNjGIwPdFQj5FxRjT2it
+q3K0pZVIw0O4R2Kfu6A3DbPgMawfhX+ZWmVg4g8CgYEA8jvZAMUelsF8UyirEdOe
+6qyd4Bqam6T39CwCsCc1Yd1IlWo2nJsftEuoD7TZmQKPfMZ0AG/3UwaY6AUsb7Rw
+8S4tpJwyrdMCff+KAxyxVQMOElBdPvA5hGFCIUmYrqC9VFY3qV7mIyj6on0WPULH
+HQhaCeiqgwNd43KYwlT3VTECgYEA3PUz3Zhuxk58wmaaA+UQteiUGAuHXMpQh6od
+7C49RXJw1TumqWVqsc0lYrtiHoDVFtPkJ13IhVtt5/Qbm18g0JTwBqfs/j2FPLII
+LiDUsEx8xGGd3PVdbsxVJtVvzGDbojwvjzMCy2n1bNmG9EASC1Tgv38GIdl74pEF
+ZSrvkuMCgYBNnDL2diVb7Rlz53AXhaTM0gMczmbN7dRq5wRqgvrs5exFKqDCAxe4
+2zYBTcJJ1O6uonxa4bi53V6CJ3JiNCXirmiNPCtheuKXKaBBfi6JzfMM/cIyNnWD
+ioTcwR1TO34Nupfz1eGKdRJcPI6yZwWU+Vl+sTdgJEDk+rsrkf8siw==
+-----END RSA PRIVATE KEY-----
+
+chmod 400 primekeypem.pem
+
+1. Test the connection  
+   ```sh
+   ansible -i hosts all -m ping 
+   ```
+
+
+
+
+
+
+
+
+
+
+
+
